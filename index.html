@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Upload S3</title>
+</head>
+<body style="font-family:Arial; background:#0f172a; color:white; text-align:center;">
+
+  <h1>Video Upload Platform</h1>
+
+  <input type="file" id="videoInput" accept="video/*">
+
+  <br><br>
+
+  <button onclick="uploadVideo()">Upload</button>
+
+  <p id="status"></p>
+
+  <script>
+    async function uploadVideo() {
+      const file = document.getElementById("videoInput").files[0];
+
+      if (!file) {
+        alert("Video tanlang");
+        return;
+      }
+
+      document.getElementById("status").innerText = "Upload qilinyapti...";
+
+      // Hozircha demo (backend yo‘q bo‘lsa ishlamaydi)
+      const url = URL.createObjectURL(file);
+
+      const video = document.createElement("video");
+      video.src = url;
+      video.controls = true;
+      video.style.width = "300px";
+
+      document.body.appendChild(document.createElement("br"));
+      document.body.appendChild(video);
+
+      document.getElementById("status").innerText = "Tayyor!";
+    }
+  </script>
+
+</body>
+</html>
